@@ -1,9 +1,0 @@
-{
-  "name": "advanced-flipbook-diary",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "npm run build:css && npm run build:js",
-    "build:css": "postcss styles.css -o styles.css",
-    "build:js": "terser script.js -o script.js"
-  }
-}
