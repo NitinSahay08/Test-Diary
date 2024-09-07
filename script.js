@@ -41,6 +41,35 @@ class Flipbook {
         localStorage.setItem("diary", JSON.stringify(diaryData));
     }
 
+
     loadDiary() {
         const diaryData = localStorage.getItem("diary");
-        if (diaryData)
+        if (diaryData) {
+            const entries = JSON.parse(diaryData);
+            entries.forEach((entry, index) => {
+                const newPage = document.createElement("div");
+                newPage.className = "page";
+                const front = document.createElement("div");
+                front.className = "front";
+                const back = document.createElement("div");
+                back.className = "back";
+                const entryElement = document.createElement("div");
+                entryElement.className = "entry";
+                entryElement.textContent = entry;
+                front.appendChild(entryElement);
+                newPage.appendChild(front);
+                newPage.appendChild(back);
+                this.element.appendChild(newPage);
+                this.pages.push(newPage);
+            });
+        }
+    }
+
+    flipPage() {
+        const currentPage = this.pages[this.currentPage];
+        currentPage.classList.toggle("flipped");
+        this.currentPage = (this.currentPage + 1) % this.pages.length;
+    }
+}
+
+const flipbook = new Flipbook(document.querySelector(".flipbook"));
