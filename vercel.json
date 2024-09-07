@@ -1,8 +1,9 @@
+
 {
   "version": 2,
   "builds": [
     {
-      "src": ".", // point to the root of your project
+      "src": "index.html",
       "use": "@vercel/static-build",
       "config": {}
     }
